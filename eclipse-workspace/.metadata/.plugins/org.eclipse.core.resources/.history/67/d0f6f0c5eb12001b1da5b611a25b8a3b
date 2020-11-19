@@ -1,0 +1,18 @@
+package ud20_21;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		float[] array_notas = new float[] {5, 8, 9, 9};
+		
+		int i;
+		float soma = 0;
+		for(i = 0; i < array_notas.length; i++) {
+			soma += array_notas[i];
+			System.out.println("A média das notas é: " + soma);
+		}
+			
+	}
+
+}

@@ -1,0 +1,20 @@
+package ud11;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Veiculo v = new Carro();
+		
+		
+		System.out.println("A aceleração do veiculo enquanto se locomove por 10 segundos é:");
+		while(v.getVel() < 10) {
+			
+			System.out.println(v.acelerar() + ".....m/s");
+			try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+		}
+		
+		
+	}
+
+}

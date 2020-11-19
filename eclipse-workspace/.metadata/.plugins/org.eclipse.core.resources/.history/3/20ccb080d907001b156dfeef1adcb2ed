@@ -1,0 +1,11 @@
+package ud11;
+
+public class Carro implements Veiculo{
+	private float vel;
+	
+	public float acelerar() {
+
+		return vel++;
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;ud15_16&apos; to &apos;ud17_18&apos;&#x0A;- Original project: &apos;CARRO_UD17_18&apos;&#x0A;- Original element: &apos;CARRO_UD17_18/src/ud15_16&apos;&#x0A;- Renamed element: &apos;CARRO_UD17_18/src/ud17_18&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;ud15_16&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;ud15_16" name="ud17_18" qualified="false" references="true" stamp="1603141430302" textual="false" version="1.0"/>
+</session>

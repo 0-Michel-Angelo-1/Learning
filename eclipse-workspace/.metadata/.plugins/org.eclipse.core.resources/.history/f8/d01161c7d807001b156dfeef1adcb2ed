@@ -1,0 +1,5 @@
+package ud11;
+
+public interface Veiculo {
+
+}

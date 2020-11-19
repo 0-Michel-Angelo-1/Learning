@@ -1,0 +1,19 @@
+package ud11;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Veiculo v = new Carro();
+		
+		v.acelerar();
+		
+		while(v.acelerar()>0 && v.acelerar() < 10) {
+			System.out.println(v.acelerar());
+			try { Thread.sleep (500); } catch (InterruptedException ex) {}
+		}
+		
+		
+	}
+
+}

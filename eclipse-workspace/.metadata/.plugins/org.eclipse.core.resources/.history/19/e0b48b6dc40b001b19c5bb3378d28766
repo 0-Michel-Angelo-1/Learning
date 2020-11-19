@@ -1,0 +1,12 @@
+package ud13_14;
+
+public class ContaCorrente {
+	float dinheiro=0;
+	
+	public float sacar(double din) {		
+		this.dinheiro -= din;
+
+		return this.dinheiro;
+	}
+	
+}

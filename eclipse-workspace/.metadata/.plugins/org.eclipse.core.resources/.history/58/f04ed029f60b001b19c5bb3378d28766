@@ -1,0 +1,18 @@
+package ud13_14;
+
+public class ContaCorrente {
+	
+	float dinheiro = 0;
+	float dinheiroTotal = 10000; //10 mil reais
+	
+	public void sacar(double din) {		
+
+		dinheiroTotal = (float) (dinheiroTotal - din);
+	
+	}
+	
+	
+	public float getConta() {
+		return dinheiroTotal;
+	}
+}

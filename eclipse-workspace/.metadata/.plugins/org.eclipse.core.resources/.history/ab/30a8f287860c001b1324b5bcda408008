@@ -1,0 +1,18 @@
+package ud13_14;
+
+public class ContaCorrente {
+	
+	float dinheiroTotal = 10000; //10 mil reais
+	
+	public void sacar(float saque) throws Exception{		
+
+		if(saque >= dinheiroTotal) throw new Exception("ACABOU O DINHEIRO!!!!!");
+		
+	}
+	
+	
+	public float getConta() {
+		
+		return dinheiroTotal;
+	}
+}
