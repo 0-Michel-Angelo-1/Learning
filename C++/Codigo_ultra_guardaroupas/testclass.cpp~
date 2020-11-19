@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+#include "classe.h"
+
+int main(int argc, char *argv[])
+{
+    Moto *v1 = new Moto();
+    Carro *v2 = new Carro();
+    Bicicleta *v3 = new Bicicleta();
+    Motocabike *mcb1 = new Motocabike();
+    cout << "\t\tVeiculos:\n"<< endl;
+    
+    v1->imp();
+    v2->imp();
+	v3->imp();
+	
+	mcb1->impP();
+	mcb1->imp();
+	return 0;
+}
