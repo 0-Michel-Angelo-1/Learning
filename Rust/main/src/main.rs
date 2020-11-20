@@ -4,9 +4,16 @@ fn main() {
     let i: u8 = 255; //uma declaração pois não retorna um valor
                      //ponto e virgula obrigatório!
 
+    let mut s1 = String::from("Texto");
+
+    let r1 = &s1; //apenas lerr o valor
+
+    println!("r1 leu {}", r1);
     println!("Hello, world! the number of the beast is {}", i);
     println!("i'm the new rust user");
+
     cleber(i);
+
     numero_muito_doidinho();
 
     println!(
@@ -23,6 +30,7 @@ fn main() {
     fibonacci();
 
     let palavra = ownership();
+
     println!("{}", palavra);
 
     if ownership() == "Michel é muito lindo" {
@@ -30,6 +38,13 @@ fn main() {
     } else {
         println!("Michel é fei pa cacete");
     }
+
+    let tamanho: usize = referencias(&s1); //se refere ao valor de s1 sem tomar posse do mesmo
+
+    println!("{} tem tamanho {}", s1, tamanho);
+
+    modifica_emprestimo(&mut s1); //empresta valor mutável a 'add'
+    println!("s1 agora tem: {}", s1)
 }
 
 fn cleber(i: u8) {
@@ -85,9 +100,21 @@ fn dejavu() {
 fn ownership() -> String {
     let x = String::from("Michel");
     let str = x; //movendo x para str, rust vai invalidar x para que não haja double free
-
     let mut y = str.clone(); //clona o conteudo da memoria heap de 'stri' para 'y'
+
     y.push_str(" é muito lindo");
 
-    y.to_string()
+    y
+}
+//--------------------------------------------------//
+
+//referencias ou borrowing(empréstimo ou agiotagem)
+fn referencias(s: &String) -> usize {
+    //s recebe o valor de s1 como referencia, mas não tomará posse dele
+    s.len() //retorna o tamanho da string
+}
+
+fn modifica_emprestimo(add: &mut String) {
+    //add recebe emprestado o valor referenciado pelo argumento do parametro para mutação
+    add.push_str(" sobre a humanidade");
 }
