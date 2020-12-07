@@ -1,52 +1,79 @@
-#[allow(unused_variables)]
-#[derive(Debug)]
-enum estado {
-    Alaska,
-}
+extern crate main;
 
-enum Moeda {
-    Penny,
-    Nickel,
-    Dime,
-    Quarter(estado),
-}
+use std::process::Command;
+use std::{thread, time};
+
+use fordcar::Carro;
+use time::Duration;
+
+use main::marcas::fordcar;
 
 fn main() {
-    valorcents(Moeda::Quarter(estado::Alaska)); //atrinui um estado dos eua no quarter
+    let frase_filosofa: String = String::from(
+        "o homem poderoso e aquele que tem poder sobre si mesmo - seneca".to_uppercase(),
+    );
+    //let autor: &str = pega_autor(&frase_filosofa);
+    //imprime_letreiro(&frase_filosofa);
+    //println!("{}", autor);
+    let fordcar: Carro = Carro {
+        modelo: String::from("FordCar2077_atiaderente"),
+        tipo: String::from("Urbano"),
+        nome: String::from("Forderente"),
+        marca: String::from("Ford"),
+    };
 
-    let cinco = Some(5);
-    let seis = mais_um(cinco); //vai adc mais um ao 5
-    let nenhum = mais_um(None);
+    println!("{:#?}", fordcar);
+}
+//essa função aplica o sleep, retardo na velocidade de algum loop quando chamado
 
-    if mais_um(cinco) == seis {
-        println!("é cinco seis em");
-    } else {
-        println!("i é 5");
-    }
-    let algum_valoru8 = Some(5);
-
-    if let Some(5) = algum_valoru8 {
-        //opcao alternativa do match, porém perde em verificação
-        println!("cinco");
-    }
+fn espera_pouco() {
+    let duzentos_milis: Duration = time::Duration::from_millis(200);
+    thread::sleep(duzentos_milis);
+}
+//espera muito uai
+fn espera_muito() {
+    let duzentos_milis: Duration = time::Duration::from_millis(400); //define quantos segundos o programa deve parar
+    thread::sleep(duzentos_milis); // faz o programa pausar por alguns segundos
 }
 
-fn mais_um(x: Option<i32>) -> Option<i32> {
-    match x {
-        None => None,           //match que verifica valores  de x
-        Some(i) => Some(i + 1), //caso seja algo é adicionado 1 ao valor
-    }
+//limpa a tela no terminal e mostra a tela limpa
+fn limpa_tela() {
+    let output = Command::new("clear")
+        .output()
+        .unwrap_or_else(|e| panic!("failed in execute process: {}", e));
+    println!("{}", String::from_utf8_lossy(&output.stdout));
 }
 
-fn valorcents(moeda: Moeda) -> u8 {
-    match moeda {
-        Moeda::Penny => 1,
-        Moeda::Nickel => 5,
-        Moeda::Dime => 10,
-        Moeda::Quarter(estado) => {
-            // relaciona as variantes da enum estado
-            println!("Quarter do estado {:?}", estado);
-            25
+//mostra uma slice que representa o nome do autor
+fn pega_autor(frase: &String) -> &str {
+    let bytes: &[u8] = frase.as_bytes();
+
+    for (i, &letra) in bytes.iter().enumerate() {
+        if letra == b'-' {
+            return &frase[i + 1..];
+        }
+    }
+    &frase
+}
+
+//imprime um letreiro
+fn imprime_letreiro(frase: &str) {
+    const TAMANHO_JANELA: usize = 3;
+    let mut i: usize = 0;
+
+    loop {
+        espera_pouco();
+        limpa_tela();
+        println!(
+            "---------------[{}]--------------",
+            &frase[i..i + TAMANHO_JANELA]
+        );
+        // caso o loop ultrapasse o tamanho da frase
+        if i + TAMANHO_JANELA == frase.len() {
+            espera_muito();
+            i = 0;
+        } else {
+            i = i + 1;
         }
     }
 }
